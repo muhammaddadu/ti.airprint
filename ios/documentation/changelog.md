@@ -1,5 +1,7 @@
 # Change Log
 <pre>
+v1.4.1 	[TIMOB-18144] Update manifest with architectures
+
 v1.4.0  [TIMOB-17928] Updated to build for 64-bit
 
 v1.3.1  [MOD-1122] Build with 2.1.3.GA and move to open source repo
