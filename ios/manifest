@@ -2,11 +2,12 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.4.0
+version: 1.4.1
+architectures: armv7 i386 x86_64 arm64
 description: Exposes the AirPrint API to Titanium Mobile applications.
 author: Dawson Toth
 license: Apache License, Version 2.0
-copyright: Copyright (c) 2010-2013 by Appcelerator, Inc.
+copyright: Copyright (c) 2010-2014 by Appcelerator, Inc.
 
 
 # these should not be edited
