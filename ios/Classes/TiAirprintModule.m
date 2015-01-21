@@ -90,6 +90,15 @@
     }
     controller.showsPageRange = [TiUtils boolValue:[args objectForKey:@"showsPageRange"] def:YES];
     controller.printingItem = url;
+
+	BOOL* isMarkup = [TiUtils boolValue:[args objectForKey:@"isHtml"]];
+	if (isMarkup) {
+		NSLog(@"[INFO] Printing html string.");
+		NSString* html = [args objectForKey:@"html"];
+		controller.printingItem = nil;
+		UIPrintFormatter *formatter = [[UIMarkupTextPrintFormatter alloc] initWithMarkupText:html];
+		controller.printFormatter = formatter;
+	}
     
     NSLog(@"[INFO] Printing out %@", url);
 

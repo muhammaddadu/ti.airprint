@@ -1,5 +1,7 @@
 # Change Log
 <pre>
+v1.4.2 	[TIMODOPEN-200] Add HTML printing
+
 v1.4.1 	[TIMOB-18144] Update manifest with architectures
 
 v1.4.0  [TIMOB-17928] Updated to build for 64-bit
