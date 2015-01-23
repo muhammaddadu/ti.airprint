@@ -67,9 +67,9 @@
 
 #pragma Public APIs
 
-- (BOOL)canPrint:(id)args
+- (NSInteger)canPrint:(id)args
 {
-    return [UIPrintInteractionController isPrintingAvailable];
+    return NUMINT([UIPrintInteractionController isPrintingAvailable]);
 }
 
 - (void)print:(id)args

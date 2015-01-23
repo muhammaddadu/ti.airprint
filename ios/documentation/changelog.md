@@ -1,5 +1,9 @@
 # Change Log
 <pre>
+v1.4.3 	[MOD-2078] module not working in 3.5.0.GA
+
+v1.4.2 	Updated module
+
 v1.4.1 	[TIMOB-18144] Update manifest with architectures
 
 v1.4.0  [TIMOB-17928] Updated to build for 64-bit
