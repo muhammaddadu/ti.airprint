@@ -74,12 +74,15 @@
 
 - (void)print:(id)args
 {
-	ENSURE_UI_THREAD(print,args);
-	ENSURE_SINGLE_ARG(args,NSDictionary);
+    ENSURE_UI_THREAD(print,args);
+    ENSURE_SINGLE_ARG(args,NSDictionary);
 
     NSURL* url = [TiUtils toURL:[args objectForKey:@"url"] proxy:self];
-    if (url==nil) {
-        NSLog(@"[ERROR] Print called without passing in a url property!");
+    NSString* html = [TiUtils stringValue:[args objectForKey:@"html"]];
+
+    // check for required arguments
+    if (url == nil && html == nil) {
+        NSLog(@"[ERROR] Print called without passing in a url/html property!");
         return;
     }
 
@@ -89,18 +92,15 @@
         return;
     }
     controller.showsPageRange = [TiUtils boolValue:[args objectForKey:@"showsPageRange"] def:YES];
-    controller.printingItem = url;
 
-	BOOL* isMarkup = [TiUtils boolValue:[args objectForKey:@"isHtml"]];
-	if (isMarkup) {
-		NSLog(@"[INFO] Printing html string.");
-		NSString* html = [args objectForKey:@"html"];
-		controller.printingItem = nil;
-		UIPrintFormatter *formatter = [[UIMarkupTextPrintFormatter alloc] initWithMarkupText:html];
-		controller.printFormatter = formatter;
-	}
-    
-    NSLog(@"[INFO] Printing out %@", url);
+    if (url != nil) {
+        controller.printingItem = url;    
+        NSLog(@"[INFO] Printing out %@", url);
+    } else if (html != nil) {
+        UIPrintFormatter *formatter = [[UIMarkupTextPrintFormatter alloc] initWithMarkupText:html];
+        controller.printFormatter = formatter;
+        NSLog(@"[INFO] Printing html string.");
+    }
 
     UIPrintInteractionCompletionHandler completionHandler =
     ^(UIPrintInteractionController *printController, BOOL completed, NSError *error) {

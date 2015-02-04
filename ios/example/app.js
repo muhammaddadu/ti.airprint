@@ -39,7 +39,7 @@ else {
         var button = Ti.UI.createButton({
             title: 'Print Image',
             width: 100, height: 40,
-            top: 10, right: 10
+            top: 10
         });
         win.add(button);
         button.addEventListener('click', function () {
@@ -47,6 +47,23 @@ else {
                 url: pdfFile.nativePath,
                 showsPageRange: true,
                 view: button
+            });
+        });
+
+        var htmlButton = Ti.UI.createButton({
+            title: 'Print HTML',
+            width: 100, height: 40,
+            top: 40
+        });
+
+        win.add(htmlButton);
+
+        htmlButton.addEventListener('click', function () {
+            Ti.API.info('Clicking button');
+            AirPrint.print({
+                html: '<h1>Hello World</h1>',
+                showsPageRange: true,
+                view: htmlButton
             });
         });
     }
